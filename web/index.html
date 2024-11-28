@@ -41,12 +41,47 @@
 
     <!-- 主要內容區 -->
     <main>
-        <section id="banner">  </section>
+        <section id="banner"> </section>
+
+        <!-- 最新消息 -->
         <section id="news">
             <header class="title">
                 <h2>NEWS</h2>
                 <h3>最新消息</h3>
             </header>
+
+            <!-- 列表區 -->
+            <box class="box-list">
+                <!-- article.item*3>a>(figure>img)+div.content>h2+p -->
+                <article class="item">
+                    <a href="#">
+                        <figure><img src="./images/pt_news1.jpg" alt=""></figure>
+                        <div class="content">
+                            <h2>NEWS TITLE</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Debitis soluta magni iusto laborum cupiditate quo cum, dignissimos dolore earum provident. Voluptatum nihil accusamus ad, ratione ipsum laboriosam quae earum numquam?</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="item">
+                    <a href="#">
+                        <figure><img src="./images/pt_news2.jpg" alt=""></figure>
+                        <div class="content">
+                            <h2>NEWS TITLE</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, ea impedit tempora doloribus adipisci, non minima voluptatibus, unde perferendis eveniet modi maiores accusantium voluptatum nemo placeat sequi odit sapiente? Consequuntur.</p>
+                        </div>
+                    </a>
+                </article>
+                <article class="item">
+                    <a href="#">
+                        <figure><img src="./images/pt_news3.jpg" alt=""></figure>
+                        <div class="content">
+                            <h2>NEWS TITLE</h2>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Deserunt quidem unde sit, facilis eius quisquam inventore! Vel nemo minima ipsum, vitae dolorem veniam voluptates, nostrum neque voluptatibus minus possimus earum!</p>
+                        </div>
+                    </a>
+                </article>
+            </box>
+
         </section>
         <section id="service">
             <header class="title">
@@ -71,6 +106,30 @@
                 <h2>CONTACT</h2>
                 <h3>聯絡我們</h3>
             </header>
+            <!-- 表單 -->
+            <form action="" method="post" name="contact-form" id="contact-form" title="聯絡我們表單">
+                <label for="username">*姓名</label>
+                <input type="text" name="username" id="username" title="姓名" placeholder="請輸入姓名" required>
+
+                <label for="tel">聯絡電話：</label>
+                <input type="tel" name="tel" id="tel" title="聯絡電話" placeholder="請輸入聯絡電話">
+
+                <label for="email">*Email：</label>
+                <input type="email" name="email" id="email" title="Email" placeholder="請輸入Email" required>
+
+                <label for="message">留言</label>
+                <textarea name="message" id="message" title="留言欄位" rows="6"></textarea>
+                <small>此表單為練習作品，不具有收集資料功能。不具有商業行為。非正式網站</small>
+
+                <button type="submit" name="contact-btn" id="contact-btn" title="送出按鈕">
+                    <span>送出</span>
+                </button>
+            </form>
+
+            <figure class="flower_r"><img src="./images/flower_r.png" alt="紅花"></figure>
+            <figure class="flower_w"><img src="./images/flower_w.png" alt="白花"></figure>
+
+
         </section>
     </main>
 

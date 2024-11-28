@@ -4,3 +4,8 @@
     backdrop-filter: blur(3px) brightness(120%);/* 模糊 明亮度 */
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); /* 容器外圍陰影 */
 }
+%box-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

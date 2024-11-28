@@ -1,15 +1,25 @@
 @use 'reset'; //導入reset進來
 @use 'variables' as *;
 @use 'function' as *;
+@use 'keyframes';
 @import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Knewave&display=swap');
+
+body {
+    color: $deep;
+}
 
 /* 頁首區 */
 #topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* position的寬度會改為自動抓內容尺寸 */
     display: flex; //主軸方向 水平
     justify-content: space-between; //主軸(水平)左右均分
     align-items: center; //副軸(垂直)置中
     padding: $interval-xy-l;
-    background-image: url(../images/banner_1.jpg);
+
 
 
     .logo {
@@ -33,13 +43,13 @@
 
             }
 
-            @each $social in fb, ig iline {
-                .icon-#{social} {
-                    background-image:url(../images/icon-#{social}.svg);
+            @each $social in fb, ig, line {
+                .icon-#{$social} {
+                    background-image:url(../images/icon-#{$social}.svg);
                 }
 
-                .icon-#{social}:hover {
-                    background-image:url(../images/icon-#{social}-hover.svg);
+                .icon-#{$social}:hover {
+                    background-image:url(../images/icon-#{$social}-hover.svg);
                 }
             }
         }
@@ -61,7 +71,7 @@
                 //如果寫在hover離開時就不會有動畫
                 text-shadow: $text-shadow; //文字外圍陰影
 
-                &:hover{
+                &:hover {
                     @include border-b;
                     color: $deep;
                 }
@@ -71,6 +81,162 @@
         }
     }
 }
-section{
-    height: 100vh;//一個視窗高
+
+
+/* 主要內容區  */
+section {
+    height: 100vh; //一個視窗高
+    @extend %box-center;
+    flex-direction: column;
+
+    .title {
+        @extend %box-center;
+        flex-direction: column;
+        position: relative;
+
+        &::before {
+            content: '';
+            /* 必須寫這句，沒寫就不會顯示。就算是空值也要保留，但不能放重要文案，因為搜尋引擎搜不到 */
+            background-color: $deep;
+            width: 15px;
+            height: 15px;
+            border-radius: 99px;
+
+            position: absolute; //絕對定位
+            top: -10px;
+            left: -15px;
+        }
+
+        &::after {
+            content: '';
+            background-color: $deep;
+            width: 10px;
+            height: 10px;
+            border-radius: 99px;
+
+            position: absolute;
+            bottom: 20px;
+            right: -10px;
+        }
+
+        h2 {
+            font-family: "Knewave", serif;
+            font-size: $font-size-xxxl;
+        }
+
+        h3 {
+            font-family: "LXGW WenKai Mono TC", serif;
+            font-size: $font-size-l;
+        }
+
+    }
+}
+.box-list{
+    width: 80%;
+    max-width: 1400px;//最大寬度max-width(px)常搭配寬度width(%)
+    display: flex;
+}
+
+/* 最新消息 */
+
+
+/* 聯絡我們表單 */
+#contact {
+    position: relative;
+    overflow: hidden;//超過爸爸隱藏
+    background-image: url('../images/bg_contact.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; //固定背景的語法
+
+    #contact-form {
+        width: 35%;
+
+        >* {
+            display: block;
+            width: 100%;
+        }
+
+        label {
+            margin: $interval-label;
+            font-size: $font-size-s;
+        }
+
+        input,
+        textarea {
+            color: $lesser-4;
+            font-size: $font-size-m;
+            padding: 8px;
+            border-radius: 8px;
+
+            @extend %glassmorphism;
+            //修改input預設樣式
+            background-color: transparent;
+            border: none;
+
+            &::placeholder {
+                color: $lesser-2;
+            }
+
+            &:focus{
+                outline:2px solid $lesser-3;
+            }
+        }
+
+        small {
+            font-size: $font-size-xs;
+        }
+
+        #contact-btn {
+            @extend %box-center;
+            @extend %glassmorphism;
+            //修改button預設樣式
+            background-color: transparent;
+            border: none;
+
+            border-radius: 99px;
+            cursor: pointer; //游標
+            height: 60px;
+            width: 210px;
+            margin: $interval-x-center ;
+
+            span {
+                color: $lesser-4;
+                letter-spacing: 1.5rem; //字距家在每個字的右邊
+                padding-left: 1.5rem; //因為使用字距會歪一邊所以用左邊調整
+            }
+
+            &:hover {
+                //btn的hover
+                animation: rotate 0.7s ease-in-out both;
+
+                span {
+                    animation: storm 0.7s ease-in-out both;
+                    animation-delay: 0.06s;
+                }
+            }
+
+        }
+    }
+
+    .flower_r{
+        width: 320px;
+        position: absolute;
+        left: -30px;
+        bottom: -50px;
+        transform: rotate(30deg);
+        
+    }
+    .flower_w {
+        width: 320px;
+        position: absolute;
+        top: 50px;
+        right: -30px;
+        transform: rotate(-50deg);
+        
+    }
+}
+footer{
+    height: 150px;
+    background-color: $bg-3;
 }

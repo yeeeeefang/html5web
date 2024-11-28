@@ -130,19 +130,68 @@ a {
 }
 
 /* reset end */
-#topbar .navigation .menu {
+#topbar .navigation .menu, #contact #contact-form input,
+#contact #contact-form textarea, #contact #contact-form #contact-btn {
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.4));
   backdrop-filter: blur(3px) brightness(120%); /* 模糊 明亮度 */
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); /* 容器外圍陰影 */
 }
 
+section, section .title, #contact #contact-form #contact-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+@keyframes storm {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}
+body {
+  color: #333;
+}
+
 /* 頁首區 */
 #topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* position的寬度會改為自動抓內容尺寸 */
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px 50px;
-  background-image: url(../images/banner_1.jpg);
 }
 #topbar .logo {
   width: 65px;
@@ -161,17 +210,23 @@ a {
   margin-right: 10px;
   transition: 0.4s;
 }
-#topbar .navigation .icon .icon-social {
-  background-image: url(../images/icon-social.svg);
+#topbar .navigation .icon .icon-fb {
+  background-image: url(../images/icon-fb.svg);
 }
-#topbar .navigation .icon .icon-social:hover {
-  background-image: url(../images/icon-social-hover.svg);
+#topbar .navigation .icon .icon-fb:hover {
+  background-image: url(../images/icon-fb-hover.svg);
 }
-#topbar .navigation .icon .icon-social {
-  background-image: url(../images/icon-social.svg);
+#topbar .navigation .icon .icon-ig {
+  background-image: url(../images/icon-ig.svg);
 }
-#topbar .navigation .icon .icon-social:hover {
-  background-image: url(../images/icon-social-hover.svg);
+#topbar .navigation .icon .icon-ig:hover {
+  background-image: url(../images/icon-ig-hover.svg);
+}
+#topbar .navigation .icon .icon-line {
+  background-image: url(../images/icon-line.svg);
+}
+#topbar .navigation .icon .icon-line:hover {
+  background-image: url(../images/icon-line-hover.svg);
 }
 #topbar .navigation .menu {
   display: flex;
@@ -188,9 +243,132 @@ a {
 }
 #topbar .navigation .menu a:hover {
   border-bottom: 2px solid #666;
-  color: #222;
+  color: #333;
 }
 
+/* 主要內容區  */
 section {
   height: 100vh;
+  flex-direction: column;
+}
+section .title {
+  flex-direction: column;
+  position: relative;
+}
+section .title::before {
+  content: "";
+  /* 必須寫這句，沒寫就不會顯示。就算是空值也要保留，但不能放重要文案，因為搜尋引擎搜不到 */
+  background-color: #333;
+  width: 15px;
+  height: 15px;
+  border-radius: 99px;
+  position: absolute;
+  top: -10px;
+  left: -15px;
+}
+section .title::after {
+  content: "";
+  background-color: #333;
+  width: 10px;
+  height: 10px;
+  border-radius: 99px;
+  position: absolute;
+  bottom: 20px;
+  right: -10px;
+}
+section .title h2 {
+  font-family: "Knewave", serif;
+  font-size: 2rem;
+}
+section .title h3 {
+  font-family: "LXGW WenKai Mono TC", serif;
+  font-size: 1.2rem;
+}
+
+.box-list {
+  width: 80%;
+  max-width: 1400px;
+  display: flex;
+}
+
+/* 最新消息 */
+/* 聯絡我們表單 */
+#contact {
+  position: relative;
+  overflow: hidden;
+  background-image: url("../images/bg_contact.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+#contact #contact-form {
+  width: 35%;
+}
+#contact #contact-form > * {
+  display: block;
+  width: 100%;
+}
+#contact #contact-form label {
+  margin: 24px 0 8px;
+  font-size: 0.85rem;
+}
+#contact #contact-form input,
+#contact #contact-form textarea {
+  color: #6d4768;
+  font-size: 1rem;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: transparent;
+  border: none;
+}
+#contact #contact-form input::placeholder,
+#contact #contact-form textarea::placeholder {
+  color: #bf98ca;
+}
+#contact #contact-form input:focus,
+#contact #contact-form textarea:focus {
+  outline: 2px solid #b361b6;
+}
+#contact #contact-form small {
+  font-size: 0.8rem;
+}
+#contact #contact-form #contact-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 99px;
+  cursor: pointer;
+  height: 60px;
+  width: 210px;
+  margin: 20px auto;
+}
+#contact #contact-form #contact-btn span {
+  color: #6d4768;
+  letter-spacing: 1.5rem;
+  padding-left: 1.5rem;
+}
+#contact #contact-form #contact-btn:hover {
+  animation: rotate 0.7s ease-in-out both;
+}
+#contact #contact-form #contact-btn:hover span {
+  animation: storm 0.7s ease-in-out both;
+  animation-delay: 0.06s;
+}
+#contact .flower_r {
+  width: 320px;
+  position: absolute;
+  left: -30px;
+  bottom: -50px;
+  transform: rotate(30deg);
+}
+#contact .flower_w {
+  width: 320px;
+  position: absolute;
+  top: 50px;
+  right: -30px;
+  transform: rotate(-50deg);
+}
+
+footer {
+  height: 150px;
+  background-color: #eee6f7;
 }/*# sourceMappingURL=style.css.map */

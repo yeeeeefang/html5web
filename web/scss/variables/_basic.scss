@@ -1,13 +1,23 @@
 //間距
-$interval-s:10px;
-$interval-x-s:0 10px;
-$interval-xy-l:20px 50px;
-$interval-s-xy-l:8px 0 5px;
+$interval-s: 10px;
+$interval-x-s: 0 10px;
+$interval-label: 24px 0 8px;
+$interval-xy-l: 20px 50px;
+$interval-s-xy-l: 8px 0 5px;
+$interval-x-center: 20px auto;
 
 
 //速率
-$speed-fast:.4s;
+$speed-fast: .4s;
 
 //樣式特效
-$text-shadow:0 0 2px rgba(255, 255, 255, 0.3);
+$text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
 
+//字級
+$font-size-xs: 0.8rem;
+$font-size-s: 0.85rem;
+$font-size-m: 1rem;
+$font-size-l: 1.2rem;
+$font-size-xl: 1.4rem;
+$font-size-xxl: 1.8rem;
+$font-size-xxxl: 2rem;
