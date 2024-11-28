@@ -1,0 +1,136 @@
+@charset "UTF-8";
+/* reset */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+}
+*{
+    box-sizing: border-box;
+}
+/* 重置字體 */
+body{
+    font-family: sans-serif;
+    line-height: 1.2;
+}
+/* 重置標題 */
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+}
+/* 重置列表 */
+ul, ol{
+    list-style: none;
+}
+/* 重置圖片 */
+img{
+    display: block;
+    width: 100%;
+}
+/* 重置連結 */
+a{
+    display: block; /* 將a預設inline改為block，才能設定間距及寬高*/
+    color: #666;
+    text-decoration: none;
+}
+
+/* 頁首區 */
+#topbar{
+    display: flex;/* 主軸方向 水平 */
+    justify-content: space-between;/* 主軸(水平)左右均分 */
+    align-items: center;/* 副軸(垂直)均分 */
+    padding: 20px 50px;/* 上下 左右 */
+    background-image: url(../images/banner_1.jpg);
+    
+}
+
+
+#topbar .logo{
+    width: 65px; /* 並非直接改img而是改他父元素 */
+    
+}
+
+#topbar .navigation{
+    display: flex; /* 水平 */
+    flex-direction: column; /* 主軸方向垂直 */
+    align-items: self-end; /* 副軸水平置頂靠右 */
+}
+
+/* icon按鈕 */
+#topbar .icon{
+    display: flex;
+    /* margin-bottom: 5px; 已經設定到topbar .manu*/
+}
+#topbar .icon a{
+    width: 35px;
+    height: 35px;
+    margin-right: 10px;
+    transition: .4s;
+    
+}
+#topbar .icon-fb{
+    background-image: url(../images/icon-fb.svg);/* 背景沒有尺寸 */
+}
+#topbar .icon-ig{
+    background-image: url(../images/icon-ig.svg);
+    /* CSS中背景影像式SVG，會自動等比例縮放100% */
+    /* 如果不是要手動寫入尺寸100%  */
+    /* background-size:100%; */
+}
+#topbar .icon-line{
+    background-image: url(../images/icon-line.svg);
+}
+#topbar .icon-fb:hover{
+    background-image: url(../images/icon-fb-hover.svg);
+}
+#topbar .icon-ig:hover{
+    background-image: url(../images/icon-ig-hover.svg);
+}
+#topbar .icon-line:hover{
+    background-image: url(../images/icon-line-hover.svg);
+}
+
+/* 主選單 */
+#topbar .menu{
+    display: flex;
+    background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.15),rgba(255, 255, 255, 0.4));
+    border-radius: 99px;
+    padding: 0 10px;
+    margin-top: 10px;
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); /* 容器外圍陰影 */
+    backdrop-filter: blur(3px) brightness(120%);/* 模糊 明亮度 */
+
+    /* filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5)); 整個物件包含內容都有陰影*/
+
+}
+#topbar .menu a{
+    margin: 10px;
+    padding: 8px 0 5px; /*內距上下平衡 */
+    border-bottom:  2px solid transparent; /* 先保留hover底線空間(透明) 再給她顏色
+                                             解決動一夏的問題 原因尺寸不一致*/
+    transition: .4s;/* 過場動畫，寫在元素本人身上才會都有動畫*/
+    /* 如果寫在hover離開時就不會有動畫 */
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.3); /* 文字外圍陰影 */
+
+}
+#topbar .menu a:hover{
+    border-bottom:  2px solid #666;/* 加上buttom就會從四邊變成剩下底線 */
+    color: black;
+}
+/* 主要內容區 */
+section{
+    height: 100vh;/* 一個視窗高 */
+}

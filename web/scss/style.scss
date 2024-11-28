@@ -1,0 +1,76 @@
+@use 'reset'; //導入reset進來
+@use 'variables' as *;
+@use 'function' as *;
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Knewave&display=swap');
+
+/* 頁首區 */
+#topbar {
+    display: flex; //主軸方向 水平
+    justify-content: space-between; //主軸(水平)左右均分
+    align-items: center; //副軸(垂直)置中
+    padding: $interval-xy-l;
+    background-image: url(../images/banner_1.jpg);
+
+
+    .logo {
+        width: 65px; //並非直接改img而是改他父元素
+    }
+
+    .navigation {
+        display: flex; //水平
+        flex-direction: column; //主軸方向垂直
+        align-items: flex-end; //副軸水平置頂靠右
+
+        .icon {
+            display: flex;
+            //margin-bottom: 5px; 已經設定到topbar .manu
+
+            a {
+                width: 35px;
+                height: 35px;
+                margin-right: $interval-s;
+                transition: $speed-fast;
+
+            }
+
+            @each $social in fb, ig iline {
+                .icon-#{social} {
+                    background-image:url(../images/icon-#{social}.svg);
+                }
+
+                .icon-#{social}:hover {
+                    background-image:url(../images/icon-#{social}-hover.svg);
+                }
+            }
+        }
+
+        .menu {
+            display: flex;
+            border-radius: 99px;
+            padding: $interval-x-s;
+            margin-top: $interval-s;
+            @extend %glassmorphism;
+
+            a {
+                margin: $interval-s;
+                padding: $interval-s-xy-l ; //內距上下平衡
+                @include border-b($color: transparent);
+                //先保留hover底線空間(透明) 再給她顏色
+                //解決動一夏的問題 原因尺寸不一致
+                transition: $speed-fast; //過場動畫，寫在元素本人身上才會都有動畫
+                //如果寫在hover離開時就不會有動畫
+                text-shadow: $text-shadow; //文字外圍陰影
+
+                &:hover{
+                    @include border-b;
+                    color: $deep;
+                }
+
+            }
+
+        }
+    }
+}
+section{
+    height: 100vh;//一個視窗高
+}
