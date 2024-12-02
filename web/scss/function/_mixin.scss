@@ -1,3 +1,9 @@
-@mixin border-b($width:2px,$color:#666){
-    border-bottom:$width solid $color ;
+@use '../variables' as *;
+//匯入變數不可於index.scss中匯入
+
+@mixin border-b ($width:2px,$color:$deep){
+    border-bottom:$width solid $color;
+}
+@mixin bordered ($width:1px,$color:$deep){
+    border:$width solid $color;
 }

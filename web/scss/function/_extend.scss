@@ -1,11 +1,36 @@
-%glassmorphism{
+%glassmorphism {
     background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3),
-    rgba(255, 255, 255, 0.15),rgba(255, 255, 255, 0.4));
-    backdrop-filter: blur(3px) brightness(120%);/* 模糊 明亮度 */
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); /* 容器外圍陰影 */
+            rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.4));
+    backdrop-filter: blur(3px) brightness(120%);
+    /* 模糊 明亮度 */
+    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+    /* 容器外圍陰影 */
 }
-%box-center{
+
+%box-center {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+%img-cover {
+    //width:100%;已在reset檔案中設定過
+    height: 100%;
+    object-fit: cover; //高.寬都要百分之百
+}
+
+//多行省略設定
+%line-multople {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    //行數於區塊中設定-webkit-line-clamp: ;
+}
+
+//單行省略
+%line-single {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap; //不換行
 }

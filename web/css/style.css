@@ -96,7 +96,7 @@ video {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial, "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
   font-optical-sizing: auto;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 /* 重置標題 */
@@ -133,14 +133,34 @@ a {
 #topbar .navigation .menu, #contact #contact-form input,
 #contact #contact-form textarea, #contact #contact-form #contact-btn {
   background-image: linear-gradient(to bottom right, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.4));
-  backdrop-filter: blur(3px) brightness(120%); /* 模糊 明亮度 */
-  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15); /* 容器外圍陰影 */
+  backdrop-filter: blur(3px) brightness(120%);
+  /* 模糊 明亮度 */
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.15);
+  /* 容器外圍陰影 */
 }
 
 section, section .title, #contact #contact-form #contact-btn {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#news figure img {
+  height: 100%;
+  object-fit: cover;
+}
+
+#news .content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+#service .item .content p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @keyframes rotate {
@@ -178,7 +198,7 @@ section, section .title, #contact #contact-form #contact-btn {
   }
 }
 body {
-  color: #333;
+  color: #444;
 }
 
 /* 頁首區 */
@@ -186,6 +206,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 999;
   width: 100%;
   /* position的寬度會改為自動抓內容尺寸 */
   display: flex;
@@ -242,8 +263,8 @@ body {
   text-shadow: 0 0 2px rgba(255, 255, 255, 0.3);
 }
 #topbar .navigation .menu a:hover {
-  border-bottom: 2px solid #666;
-  color: #333;
+  border-bottom: 2px solid #444;
+  color: #444;
 }
 
 /* 主要內容區  */
@@ -254,11 +275,12 @@ section {
 section .title {
   flex-direction: column;
   position: relative;
+  margin: 24px;
 }
 section .title::before {
   content: "";
   /* 必須寫這句，沒寫就不會顯示。就算是空值也要保留，但不能放重要文案，因為搜尋引擎搜不到 */
-  background-color: #333;
+  background-color: #444;
   width: 15px;
   height: 15px;
   border-radius: 99px;
@@ -268,7 +290,7 @@ section .title::before {
 }
 section .title::after {
   content: "";
-  background-color: #333;
+  background-color: #444;
   width: 10px;
   height: 10px;
   border-radius: 99px;
@@ -290,8 +312,82 @@ section .title h3 {
   max-width: 1400px;
   display: flex;
 }
+.box-list .item {
+  border: 1px solid #444;
+  flex: 1;
+  margin: 0px 15px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+.box-list .item .content {
+  padding: 16px;
+}
+.box-list .item .content h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
 
 /* 最新消息 */
+#news {
+  background-color: #fce6e6;
+}
+#news figure {
+  height: 30vh;
+}
+#news .content {
+  transition: 0.4s;
+}
+#news .content p {
+  -webkit-line-clamp: 6;
+}
+#news .content:hover {
+  background-color: #f1f1f1;
+}
+
+/* 服務項目 */
+#service {
+  background-color: #f3ecd8;
+}
+#service .svc-1 {
+  background-image: url(../images/pt_svc1.jpg);
+}
+#service .svc-2 {
+  background-image: url(../images/pt_svc2.jpg);
+}
+#service .svc-3 {
+  background-image: url(../images/pt_svc3.jpg);
+}
+#service .svc-4 {
+  background-image: url(../images/pt_svc4.jpg);
+}
+#service .item {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-size: cover;
+  background-position: center;
+  height: 60vh;
+}
+#service .item .content {
+  background-color: rgba(0, 0, 0, 0.65);
+  color: #f1f1f1;
+  transition: 0.4s;
+}
+#service .item .content:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+/* 相關影片 */
+#video {
+  background-color: #e6f7ea;
+}
+#video div {
+  height: 60vh;
+}
+#video div video {
+  height: 100%;
+}
+
 /* 聯絡我們表單 */
 #contact {
   position: relative;
@@ -370,5 +466,5 @@ section .title h3 {
 
 footer {
   height: 150px;
-  background-color: #eee6f7;
+  background-color: #e6f7ea;
 }/*# sourceMappingURL=style.css.map */
