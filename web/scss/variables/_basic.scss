@@ -4,6 +4,7 @@ $interval-m: 16px;
 $interval-l: 24px;
 $interval-x-s: 0 10px;
 $interval-x-m: 0px 15px;
+$interval-y-m:  10px 0;
 $interval-label: 24px 0 8px;
 $interval-xy-l: 20px 50px;
 $interval-s-xy-l: 8px 0 5px;
@@ -25,3 +26,4 @@ $border-r-l: 24px;
 
 //z-index
 $z-index-l:999;//(階層)數字越大越前面 這樣就不會被遮到了
+$z-index-m:888;

@@ -129,6 +129,36 @@ a {
   text-decoration: none;
 }
 
+/* 卷軸樣式 */
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-button {
+  background-color: #af7e9d;
+  width: 15px;
+  height: 15px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #835c6f;
+  width: 12px;
+  border-radius: 99;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #d8b8ca;
+}
+
+::-webkit-scrollbar-corner {
+  background-color: #bd94b4;
+}
+
+::-webkit-resizer {
+  background-color: #d8b8ca;
+}
+
 /* reset end */
 #topbar .navigation .menu, #contact #contact-form input,
 #contact #contact-form textarea, #contact #contact-form #contact-btn {
@@ -139,7 +169,7 @@ a {
   /* 容器外圍陰影 */
 }
 
-section, section .title, #contact #contact-form #contact-btn {
+section, section .title, #about div, #contact #contact-form #contact-btn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -154,7 +184,9 @@ section, section .title, #contact #contact-form #contact-btn {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+  display: box;
   -webkit-box-orient: vertical;
+  box-orient: vertical;
 }
 
 #service .item .content p {
@@ -201,6 +233,34 @@ body {
   color: #444;
 }
 
+.icon {
+  display: flex;
+}
+.icon a {
+  width: 35px;
+  height: 35px;
+  margin-right: 10px;
+  transition: 0.4s;
+}
+.icon .icon-fb {
+  background-image: url(../images/icon-fb.svg);
+}
+.icon .icon-fb:hover {
+  background-image: url(../images/icon-fb-hover.svg);
+}
+.icon .icon-ig {
+  background-image: url(../images/icon-ig.svg);
+}
+.icon .icon-ig:hover {
+  background-image: url(../images/icon-ig-hover.svg);
+}
+.icon .icon-line {
+  background-image: url(../images/icon-line.svg);
+}
+.icon .icon-line:hover {
+  background-image: url(../images/icon-line-hover.svg);
+}
+
 /* 頁首區 */
 #topbar {
   position: fixed;
@@ -221,33 +281,6 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-}
-#topbar .navigation .icon {
-  display: flex;
-}
-#topbar .navigation .icon a {
-  width: 35px;
-  height: 35px;
-  margin-right: 10px;
-  transition: 0.4s;
-}
-#topbar .navigation .icon .icon-fb {
-  background-image: url(../images/icon-fb.svg);
-}
-#topbar .navigation .icon .icon-fb:hover {
-  background-image: url(../images/icon-fb-hover.svg);
-}
-#topbar .navigation .icon .icon-ig {
-  background-image: url(../images/icon-ig.svg);
-}
-#topbar .navigation .icon .icon-ig:hover {
-  background-image: url(../images/icon-ig-hover.svg);
-}
-#topbar .navigation .icon .icon-line {
-  background-image: url(../images/icon-line.svg);
-}
-#topbar .navigation .icon .icon-line:hover {
-  background-image: url(../images/icon-line-hover.svg);
 }
 #topbar .navigation .menu {
   display: flex;
@@ -340,6 +373,7 @@ section .title h3 {
 }
 #news .content p {
   -webkit-line-clamp: 6;
+  line-clamp: 6;
 }
 #news .content:hover {
   background-color: #f1f1f1;
@@ -377,6 +411,50 @@ section .title h3 {
 #service .item .content:hover {
   background-color: rgba(0, 0, 0, 0.85);
 }
+/* 關於我們  */
+#about {
+  position: relative;
+  background-color: #fce6e6;
+}
+#about div {
+  position: absolute;
+  z-index: 888;
+  width: 55%;
+  height: 100vh;
+  flex-direction: column;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+#about div p {
+  margin: 0 70px;
+  height: 70vh;
+  overflow: scroll;
+  padding: 10px;
+}
+#about div p::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+#about div p::-webkit-scrollbar-button {
+  background-color: #af7e9d;
+  width: 0px;
+  height: 0px;
+}
+#about div p::-webkit-scrollbar-thumb {
+  background-color: #835c6f;
+  width: 12px;
+  border-radius: 99px;
+}
+#about div p::-webkit-scrollbar-track {
+  background-color: #d8b8ca;
+  border-radius: 99px;
+}
+#about #video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(160%) opacity(25%);
+}
+
 /* 相關影片 */
 #video {
   background-color: #e6f7ea;
@@ -410,7 +488,7 @@ section .title h3 {
 }
 #contact #contact-form input,
 #contact #contact-form textarea {
-  color: #6d4768;
+  color: #835c6f;
   font-size: 1rem;
   padding: 8px;
   border-radius: 8px;
@@ -419,11 +497,11 @@ section .title h3 {
 }
 #contact #contact-form input::placeholder,
 #contact #contact-form textarea::placeholder {
-  color: #bf98ca;
+  color: #bd94b4;
 }
 #contact #contact-form input:focus,
 #contact #contact-form textarea:focus {
-  outline: 2px solid #b361b6;
+  outline: 2px solid #af7e9d;
 }
 #contact #contact-form small {
   font-size: 0.8rem;
@@ -438,7 +516,7 @@ section .title h3 {
   margin: 20px auto;
 }
 #contact #contact-form #contact-btn span {
-  color: #6d4768;
+  color: #835c6f;
   letter-spacing: 1.5rem;
   padding-left: 1.5rem;
 }
@@ -465,6 +543,25 @@ section .title h3 {
 }
 
 footer {
-  height: 150px;
   background-color: #e6f7ea;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+}
+footer .logo {
+  width: 50px;
+}
+footer .navigation {
+  display: flex;
+}
+footer .navigation .menu {
+  display: flex;
+  margin: 0px 15px;
+}
+footer .navigation .menu > li {
+  width: 6rem; /* 相對於字寬才用rem設定寬度 */
+  margin: 0 10px;
+}
+footer .navigation .menu > li ul {
+  margin: 10px 0;
 }/*# sourceMappingURL=style.css.map */

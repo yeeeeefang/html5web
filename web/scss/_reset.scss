@@ -1,3 +1,5 @@
+@use './variables/' as *;
+
 /* reset */
 html,
 body,
@@ -97,8 +99,8 @@ body {
         -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu, "Helvetica Neue", Helvetica, Arial,
         /*中文*/
         "蘋方-繁", "PingFang TC", "黑體-繁", "Heiti TC", "微軟正黑體", "Microsoft JhengHei", "Noto Sans TC", sans-serif;
-    font-optical-sizing: auto;//光學尺寸
-        line-height: 1.5;
+    font-optical-sizing: auto; //光學尺寸
+    line-height: 1.5;
 }
 
 /* 重置標題 */
@@ -130,5 +132,44 @@ a {
     color: #666;
     text-decoration: none;
 }
+
+/* 卷軸樣式 */
+//:: =>偽元素
+::-webkit-scrollbar {
+    //捲動條
+    width: 15px; //垂直卷軸寬
+    height: 15px; //水平卷軸高
+    // border-radius: 99px;
+
+}
+
+::-webkit-scrollbar-button {
+    background-color: $lesser-3;
+    width: 15px; //水平卷軸按鈕寬
+    height: 15px; //垂直捲職按鈕寬
+}
+
+// 卷軸按鈕(上下按鈕)
+
+::-webkit-scrollbar-thumb {
+    //卷軸手柄
+    background-color: $lesser-4;
+    width: 12px;
+    border-radius: 99;
+}
+
+::-webkit-scrollbar-track {
+    //滾動條軌道的顏色
+    background-color: $lesser-1;
+}
+
+::-webkit-scrollbar-corner {
+    //水平垂直卷軸的右下底角
+    background-color: $lesser-2;
+}
+::-webkit-resizer{//多行文字欄位右下縮放按鈕
+    background-color: $lesser-1;
+}
+
 
 /* reset end */

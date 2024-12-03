@@ -24,7 +24,9 @@
     overflow: hidden;
     text-overflow: ellipsis;
     display: -webkit-box;
+    display: box;
     -webkit-box-orient: vertical;
+    box-orient: vertical;
     //行數於區塊中設定-webkit-line-clamp: ;
 }
 
