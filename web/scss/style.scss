@@ -1,8 +1,8 @@
 @use 'reset'; //導入reset進來
-@use 'variables' as *;
-@use 'function' as *;
+@use 'variables'as *;
+@use 'function'as *;
 @use 'keyframes';
-@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Knewave&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Knewave&family=Montserrat&display=swap');
 
 body {
     color: $deep;
@@ -20,7 +20,9 @@ body {
 
     }
 
-    @each $social in fb, ig, line {
+    @each $social in fb,
+    ig,
+    line {
         .icon-#{$social} {
             background-image:url(../images/icon-#{$social}.svg);
         }
@@ -67,7 +69,7 @@ body {
 
             a {
                 margin: $interval-s;
-                padding: $interval-s-xy-l ; //內距上下平衡
+                padding: $interval-s-xy-l; //內距上下平衡
                 @include border-b($color: transparent);
                 //先保留hover底線空間(透明) 再給她顏色
                 //解決動一夏的問題 原因尺寸不一致
@@ -154,7 +156,7 @@ section {
             padding: $interval-m;
 
             h2 {
-                font-size: $font-size-l ;
+                font-size: $font-size-l;
                 font-weight: $font-weight-bold;
                 margin-bottom: $interval-s;
             }
@@ -176,7 +178,7 @@ section {
     }
 
     .content {
-        transition: $speed-fast ;
+        transition: $speed-fast;
 
         p {
             @extend %line-multople;
@@ -194,7 +196,10 @@ section {
 #service {
     background-color: $bg-2;
 
-    @each $service in 1, 2, 3, 4 {
+    @each $service in 1,
+    2,
+    3,
+    4 {
         .svc-#{$service} {
             background-image:url(../images/pt_svc#{$service}.jpg);
         }
@@ -232,7 +237,7 @@ section {
 
     div {
         position: absolute;
-        z-index: $z-index-m ;
+        z-index: $z-index-m;
 
         width: 55%;
         height: 100vh; //靠上對齊 沒辦法繼承section的置中
@@ -300,6 +305,26 @@ section {
             height: 100%;
         }
     }
+
+}
+
+/* 寫在外面的方法 RWD */
+@media ($mediaMd) {
+    #video {
+        height: auto;
+        padding: 100px 0;
+
+        div {
+            width: 70%; //寬蓋不了高 
+            height: auto; //所以要寫這句
+            //高度需要重新定義覆蓋桌機版
+
+            video {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
 }
 
 /* 聯絡我們表單 */
@@ -360,7 +385,7 @@ section {
             cursor: pointer; //游標
             height: 60px;
             width: 210px;
-            margin: $interval-x-center ;
+            margin: $interval-x-center;
 
             span {
                 color: $lesser-4;
@@ -402,7 +427,7 @@ section {
 
 footer {
     background-color: $bg-3;
-    padding:$interval-xy-l;
+    padding: $interval-xy-l;
     display: flex;
     justify-content: space-between;
 
@@ -410,22 +435,34 @@ footer {
         width: 50px;
     }
 
-    .navigation {
+    div {
         display: flex;
+        flex-direction: column;
+        align-items: flex-end;
 
-        .menu {
+        .navigation {
             display: flex;
-            margin: $interval-x-m;
 
-            >li{//只有第一層有 第二層就不會套
-                width: 6rem; /* 相對於字寬才用rem設定寬度 */
-                margin:$interval-x-s ;
-
-            ul{
-                margin:$interval-y-m ;
+            @media ($mediaMd) {
+                display: none;
             }
+
+            .menu {
+                display: flex;
+                margin: $interval-x-m;
+
+                >li {
+                    //只有第一層有 第二層就不會套
+                    width: 6rem;
+                    /* 相對於字寬才用rem設定寬度 */
+                    margin: $interval-x-s;
+
+                    ul {
+                        margin: $interval-y-m;
+                    }
+                }
             }
         }
-    }
 
+    }
 }
