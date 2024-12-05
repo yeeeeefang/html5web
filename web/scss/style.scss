@@ -58,8 +58,6 @@ body {
         flex-direction: column; //主軸方向垂直
         align-items: flex-end; //副軸水平置頂靠右
 
-
-
         .menu {
             display: flex;
             border-radius: 99px;
@@ -85,9 +83,48 @@ body {
             }
 
         }
+
+        // @media ($mediaSmUp) {
+
+        // }
+
     }
 }
 
+@media ($mediaSm) {
+    #topbar {
+        .navbar {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+
+            .hamburger {
+                //修改button預設樣式
+                background-color: transparent;
+                border: none;
+
+                .bar {
+                    display: block;
+                    width: 24px;
+                    height: 3px;
+                    background-color: $deep;
+                    margin: 5px auto;
+                }
+
+            }
+
+            .navigation {
+                align-items: center;
+
+                .menu {
+                    flex-direction: column; //主軸方向改為垂直
+                    order: -1; //order原先都是0 所以要到icon上面要變-1
+                }
+            }
+        }
+
+    }
+}
 
 /* 主要內容區  */
 section {

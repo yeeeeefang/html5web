@@ -300,6 +300,31 @@ body {
   color: #444;
 }
 
+@media (max-width:640px) {
+  #topbar .navbar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  #topbar .navbar .hamburger {
+    background-color: transparent;
+    border: none;
+  }
+  #topbar .navbar .hamburger .bar {
+    display: block;
+    width: 24px;
+    height: 3px;
+    background-color: #444;
+    margin: 5px auto;
+  }
+  #topbar .navbar .navigation {
+    align-items: center;
+  }
+  #topbar .navbar .navigation .menu {
+    flex-direction: column;
+    order: -1;
+  }
+}
 /* 主要內容區  */
 section {
   height: 100vh;
