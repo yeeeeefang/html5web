@@ -2,7 +2,11 @@
 @use 'variables'as *;
 @use 'function'as *;
 @use 'keyframes';
-@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Knewave&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Montserrat&display=swap');
+@font-face {
+    font-family:'WinterMinie' ;
+    src: url(../webfonts/WinterMinie.otf);
+}
 
 body {
     color: $deep;
@@ -59,6 +63,7 @@ body {
         align-items: flex-end; //副軸水平置頂靠右
 
         .menu {
+            font-family:'WinterMinie' ,sans-serif;
             display: flex;
             border-radius: 99px;
             padding: $interval-x-s;
@@ -167,7 +172,7 @@ section {
         }
 
         h3 {
-            font-family: "LXGW WenKai Mono TC", serif;
+            font-family: 'LXGW WenKai Mono TC',monospace;
             font-size: $font-size-l;
         }
 
