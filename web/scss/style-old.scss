@@ -1,12 +1,11 @@
-@use 'reset';
-@use 'variables' as *;
-@use 'function' as *;
+@use 'reset'; //導入reset進來
+@use 'variables'as *;
+@use 'function'as *;
 @use 'keyframes';
-@import url('https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&family=Niconne&family=Montserrat&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Knewave&family=LXGW+WenKai+Mono+TC&family=Montserrat&display=swap');
 @font-face {
-    font-family: 'coolvetica';
-    src: url(../webfonts/coolvetica-rg.otf);
+    font-family:'WinterMinie' ;
+    src: url(../webfonts/WinterMinie.otf);
 }
 
 body {
@@ -15,21 +14,25 @@ body {
 
 .icon {
     display: flex;
+    //margin-bottom: 5px; 已經設定到topbar .manu
 
     a {
         width: 35px;
         height: 35px;
         margin-right: $interval-s;
         transition: $speed-fast;
+
     }
 
-    @each $social in fb, ig, line {
+    @each $social in fb,
+    ig,
+    line {
         .icon-#{$social} {
-            background-image: url(../images/icon-#{$social}.svg);
+            background-image:url(../images/icon-#{$social}.svg);
         }
 
         .icon-#{$social}:hover {
-            background-image: url(../images/icon-#{$social}-hover.svg);
+            background-image:url(../images/icon-#{$social}-hover.svg);
         }
     }
 }
@@ -39,71 +42,68 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: $z-index-l;
+    z-index: $z-index-l; //數字越大越前面 這樣就不會被遮到了
     width: 100%;
     /* position的寬度會改為自動抓內容尺寸 */
 
-    display: flex; //主軸方向:水平
-    justify-content: space-between; // 主軸(水平)左右均分
-    align-items: center; // 副軸(垂直)置中
+    display: flex; //主軸方向 水平
+    justify-content: space-between; //主軸(水平)左右均分
+    align-items: center; //副軸(垂直)置中
     padding: $interval-xy-l;
 
+
+
     .logo {
-        // 用img的爸爸給尺寸
-        width: 65px;
+        width: 65px; //並非直接改img而是改他父元素
     }
 
     .navigation {
-        display: flex;
-        flex-direction: column; // 主軸(垂直)
-        align-items: flex-end; // 副軸(水平)置底(靠右)
+        display: flex; //水平
+        flex-direction: column; //主軸方向垂直
+        align-items: flex-end; //副軸水平置頂靠右
 
         .menu {
-            font-family: 'coolvetica', sans-serif;
+            font-family:'WinterMinie' ,sans-serif;
             display: flex;
             border-radius: 99px;
             padding: $interval-x-s;
             margin-top: $interval-s;
-            // @extend %glassmorphism;
+            @extend %glassmorphism;
 
             a {
                 margin: $interval-s;
-                padding: 7px 0 5px; // 內距上下平衡
+                padding: $interval-s-xy-l; //內距上下平衡
                 @include border-b($color: transparent);
-                text-shadow: $text-shadow;
-                transition: $speed-fast;
+                //先保留hover底線空間(透明) 再給她顏色
+                //解決動一夏的問題 原因尺寸不一致
+                transition: $speed-fast; //過場動畫，寫在元素本人身上才會都有動畫
+                //如果寫在hover離開時就不會有動畫
+                text-shadow: $text-shadow; //文字外圍陰影
 
                 &:hover {
                     @include border-b;
                     color: $deep;
                 }
+
             }
+
         }
+
+        
+
     }
 }
 
-// 手機以上尺寸
-@media ($mediaSmUp) {
-    #topbar {
-        .menu {
-            @include glassmorphism;
-        }
-    }
-}
 
-// 手機版
 @media ($mediaSm) {
     #topbar {
-        align-items: flex-start;
-        padding: 20px;
-
         .navbar {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
 
             .hamburger {
-                // 修改button預設樣式
+                //修改button預設樣式
                 background-color: transparent;
                 border: none;
 
@@ -114,27 +114,25 @@ body {
                     background-color: $deep;
                     margin: 5px auto;
                 }
+
             }
 
             .navigation {
-                display: none;
                 align-items: center;
-                @include glassmorphism;
-                padding: 0 0 10px 10px;
-                border-radius: 10px;
 
                 .menu {
-                    flex-direction: column;
-                    order: -1;
+                    flex-direction: column; //主軸方向改為垂直
+                    order: -1; //order原先都是0 所以要到icon上面要變-1
                 }
             }
         }
+
     }
 }
 
-/* 主要內容共用區 */
+/* 主要內容區  */
 section {
-    height: 100vh;
+    height: 100vh; //一個視窗高
     @extend %box-center;
     flex-direction: column;
 
@@ -142,19 +140,19 @@ section {
         @extend %box-center;
         flex-direction: column;
         position: relative;
-        margin-bottom: $interval-l;
+        margin: $interval-l;
 
         &::before {
             content: '';
-            /* 必須設定。就算沒有值也要保留空值位置 */
+            /* 必須寫這句，沒寫就不會顯示。就算是空值也要保留，但不能放重要文案，因為搜尋引擎搜不到 */
             background-color: $deep;
             width: 15px;
             height: 15px;
             border-radius: 99px;
 
-            position: absolute;
+            position: absolute; //絕對定位
             top: -10px;
-            left: -10px;
+            left: -15px;
         }
 
         &::after {
@@ -165,45 +163,45 @@ section {
             border-radius: 99px;
 
             position: absolute;
-            bottom: 25px;
+            bottom: 20px;
             right: -10px;
         }
 
         h2 {
-            font-family: 'Niconne', cursive;
+            font-family: "Knewave", serif;
             font-size: $font-size-xxxl;
         }
 
         h3 {
-            font-family: 'LXGW WenKai Mono TC', monospace;
+            font-family: 'LXGW WenKai Mono TC',monospace;
             font-size: $font-size-l;
         }
+
     }
 }
 
 .box-list {
     width: 80%;
-    max-width: 1400px;
-    /* 最大寬度max-width(px)常搭配寬度width(%) */
+    max-width: 1400px; //最大寬度max-width(px)常搭配寬度width(%)
     display: flex;
-    // justify-content: space-between;
 
     .item {
         @include bordered;
-        // width: 32%;
-        flex: 1;
+        flex: 1; //爸爸要有display flex才能設定
         margin: $interval-x-m;
         border-radius: $border-r-m;
         overflow: hidden; //隱藏超過框的內容
+
 
         .content {
             padding: $interval-m;
 
             h2 {
-                font-size: $font-size-xl;
-                font-weight: $font-w-bold;
+                font-size: $font-size-l;
+                font-weight: $font-weight-bold;
                 margin-bottom: $interval-s;
             }
+
         }
     }
 }
@@ -224,10 +222,9 @@ section {
         transition: $speed-fast;
 
         p {
-            @extend %line-multiple;
+            @extend %line-multople;
             -webkit-line-clamp: 6;
             line-clamp: 6;
-            text-align: justify;
         }
 
         &:hover {
@@ -236,55 +233,29 @@ section {
     }
 }
 
-// 平板
-@media ($mediaMd) {
-    #news {
-        .item {
-            &:last-child {
-                display: none;
-            }
-        }
-    }
-}
-
-// 手機版
-@media ($mediaSm) {
-    #news {
-        .item {
-            &:nth-child(n+2) {
-                display: none;
-            }
-        }
-    }
-}
-
 /* 服務項目 */
 #service {
     background-color: $bg-2;
 
-    @each $service in 1, 2, 3, 4 {
+    @each $service in 1,
+    2,
+    3,
+    4 {
         .svc-#{$service} {
-            background-image: url(../images/pt_svc#{$service}.jpg);
+            background-image:url(../images/pt_svc#{$service}.jpg);
         }
     }
 
     .item {
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
-
-        // position: relative;
+        justify-content: flex-end; //父軸
 
         background-size: cover;
         background-position: center;
-
         height: 60vh;
 
         .content {
-            // position: absolute;
-            // left: 0;
-            // bottom: 0;
-            // width: 100%;
             background-color: $alpha-b-65;
             color: $light;
             transition: $speed-fast;
@@ -300,25 +271,7 @@ section {
     }
 }
 
-@media ($mediaMd) {
-    #service {
-        .box-list {
-            flex-direction: column; //主軸改為垂直，變成高度(主軸方向)抓內容尺寸
-            height: 60vh; //補高度
-
-            .item {
-                margin: 15px 0;
-
-                &:nth-child(n+3) {
-                    //第三個以後作用
-                    display: none;
-                }
-            }
-        }
-    }
-}
-
-/* 關於我們 */
+/* 關於我們  */
 #about {
     position: relative;
     background-color: $bg-1;
@@ -328,40 +281,46 @@ section {
         z-index: $z-index-m;
 
         width: 55%;
-        height: 100vh;
+        height: 100vh; //靠上對齊 沒辦法繼承section的置中
 
-        @extend %box-center;
+        @extend %box-center; //主軸抓內容尺寸 副軸百分之百
         flex-direction: column;
-
         background-color: $alpha-w-60;
 
         p {
-            height: 70vh;
-            overflow: scroll;
             margin: 0 70px;
-            padding: $interval-m;
+            height: 70vh;
+            overflow: scroll; //卷軸
+            padding: 10px;
 
             &::-webkit-scrollbar {
                 //捲動條
-                width: 10px; //垂直捲軸寬
-                height: 10px; //水平捲軸高
+                width: 10px; //垂直卷軸寬
+                height: 10px; //水平卷軸高
+
             }
 
             &::-webkit-scrollbar-button {
-                //捲軸按鈕(上下)
-                height: 0; //垂直捲軸按鈕高
-                width: 0; //水平捲軸按鈕寬
+                background-color: $lesser-3;
+                width: 0px; //水平卷軸按鈕寬
+                height: 0px; //垂直捲職按鈕寬
             }
 
             &::-webkit-scrollbar-thumb {
-                //捲軸手柄
+                //卷軸手柄
+                background-color: $lesser-4;
+                width: 12px;
                 border-radius: 99px;
             }
 
             &::-webkit-scrollbar-track {
-                //滾動條的軌道
+                //滾動條軌道的顏色
+                background-color: $lesser-1;
                 border-radius: 99px;
             }
+
+
+
         }
     }
 
@@ -370,28 +329,9 @@ section {
         height: 100%;
         object-fit: cover;
 
-        // 修圖效果
+        //修片效果
         // mix-blend-mode: overlay;
         filter: brightness(160%) opacity(25%);
-    }
-}
-
-@media ($mediaMd) {
-    #about {
-        div {
-            width: 80%;
-        }
-    }
-}
-
-@media ($mediaSm) {
-    #about {
-        div {
-            width: 90%;
-            p {
-                margin: 0 20px;
-            }
-        }
     }
 }
 
@@ -406,16 +346,19 @@ section {
             height: 100%;
         }
     }
+
 }
 
+/* 寫在外面的方法 RWD */
 @media ($mediaMd) {
     #video {
         height: auto;
         padding: 100px 0;
 
         div {
-            width: 80%;
-            height: auto; //高度需要重新定義覆蓋桌機版
+            width: 70%; //寬蓋不了高 
+            height: auto; //所以要寫這句
+            //高度需要重新定義覆蓋桌機版
 
             video {
                 width: 100%;
@@ -425,16 +368,14 @@ section {
     }
 }
 
-
-/* 聯絡我們 */
+/* 聯絡我們表單 */
 #contact {
     position: relative;
-    overflow: hidden;
+    overflow: hidden; //超過爸爸隱藏
     background-image: url('../images/bg_contact.jpg');
     background-size: cover;
     background-position: center;
-    background-attachment: fixed;
-    /* 固定背景 */
+    background-attachment: fixed; //固定背景的語法
 
     #contact-form {
         width: 35%;
@@ -452,19 +393,17 @@ section {
         input,
         textarea {
             color: $lesser-4;
-            font-size: $font-size-s;
+            font-size: $font-size-m;
             padding: 8px;
-            border-radius: 5px;
+            border-radius: 8px;
 
-            @include glassmorphism;
-            // @extend %glassmorphism;
-
-            // 修改input預設樣式
+            @extend %glassmorphism;
+            //修改input預設樣式
             background-color: transparent;
             border: none;
 
             &::placeholder {
-                color: $lesser-3;
+                color: $lesser-2;
             }
 
             &:focus {
@@ -474,32 +413,29 @@ section {
 
         small {
             font-size: $font-size-xs;
-            margin-top: $interval-s;
         }
 
         #contact-btn {
             @extend %box-center;
-
-            @include glassmorphism;
-            // @extend %glassmorphism;
-
-            // 修改button預設樣式
+            @extend %glassmorphism;
+            //修改button預設樣式
             background-color: transparent;
             border: none;
 
             border-radius: 99px;
+            cursor: pointer; //游標
             height: 60px;
             width: 210px;
             margin: $interval-x-center;
-            cursor: pointer;
 
             span {
                 color: $lesser-4;
-                letter-spacing: 1.5rem; // 字距加在每個字的右邊
-                padding-left: 1.5rem; // 用左邊內距補右邊的字距使其平衡
+                letter-spacing: 1.5rem; //字距家在每個字的右邊
+                padding-left: 1.5rem; //因為使用字距會歪一邊所以用左邊調整
             }
 
             &:hover {
+                //btn的hover
                 animation: rotate 0.7s ease-in-out both;
 
                 span {
@@ -507,63 +443,31 @@ section {
                     animation-delay: 0.06s;
                 }
             }
+
         }
     }
 
-    .flower_1 {
+    .flower_r {
         width: 320px;
         position: absolute;
         left: -30px;
         bottom: -50px;
         transform: rotate(30deg);
+
     }
 
-    .flower_2 {
+    .flower_w {
         width: 320px;
         position: absolute;
         top: 50px;
         right: -30px;
         transform: rotate(-50deg);
-    }
 
-}
-
-@media ($mediaMd) {
-    #contact {
-        .flower_1 {
-            width: 250px;
-        }
-
-        .flower_2 {
-            width: 250px;
-        }
-    }
-}
-
-@media ($mediaSm) {
-    #contact {
-        #contact-form {
-            width: 60%;
-
-            #contact-btn {
-                width: 100%;
-            }
-        }
-
-        .flower_1 {
-            width: 150px;
-            bottom: -20px;
-        }
-
-        .flower_2 {
-            width: 150px;
-            top: 80px;
-        }
     }
 }
 
 footer {
-    background-color: $bg-1;
+    background-color: $bg-3;
     padding: $interval-xy-l;
     display: flex;
     justify-content: space-between;
@@ -589,14 +493,17 @@ footer {
                 margin: $interval-x-m;
 
                 >li {
-                    width: 6rem; //寬度要相對於字寬才用rem設定
+                    //只有第一層有 第二層就不會套
+                    width: 6rem;
+                    /* 相對於字寬才用rem設定寬度 */
                     margin: $interval-x-s;
 
                     ul {
-                        margin: $interval-y-s;
+                        margin: $interval-y-m;
                     }
                 }
             }
         }
+
     }
 }
